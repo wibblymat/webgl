@@ -1,0 +1,31 @@
+{
+  "name": "@wibblymat/webgl",
+  "version": "1.0.0",
+  "description": "A collection of webgl helpers",
+  "main": "dist/webgl.js",
+  "types": "dist/webgl.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepare": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wibblymat/webgl.git"
+  },
+  "author": "Mat Scales",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/wibblymat/webgl/issues"
+  },
+  "homepage": "https://github.com/wibblymat/webgl#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.12.0",
+    "@typescript-eslint/parser": "^2.12.0",
+    "eslint": "^6.7.2",
+    "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "@wibblymat/maths": "^1.0.0"
+  }
+}
