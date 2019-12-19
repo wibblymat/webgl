@@ -18,6 +18,7 @@ export default class Geometry2D {
   protected gl: WebGL2RenderingContext;
 
   constructor(gl: WebGL2RenderingContext, index: Uint16Array, positions: Float32Array, uvs: Float32Array) {
+    this.gl = gl;
     this.vao = gl.createVertexArray() || glerr(gl);
     this.vertexCount = index.length;
     gl.bindVertexArray(this.vao);
@@ -25,7 +26,6 @@ export default class Geometry2D {
     this.bindAttributeBuffer(0, 2, positions);
     this.bindAttributeBuffer(1, 2, uvs);
     gl.bindVertexArray(null);
-    this.gl = gl;
   }
 
   /**

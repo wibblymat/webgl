@@ -16,7 +16,7 @@ export default class Renderer2D {
     }
 
     this.gl = ctx;
-    this.gl.enable(this.gl.CULL_FACE);
+    // this.gl.enable(this.gl.CULL_FACE);
     this.gl.enable(this.gl.DEPTH_TEST);
     this.gl.depthFunc(this.gl.LEQUAL);
     this.gl.clearColor(0, 0, 0, 1);
