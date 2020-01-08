@@ -1,12 +1,12 @@
 import { mat4, Mat4, v3, v4 } from '@wibblymat/maths';
 import Shader from './shader';
-import Renderable2D from './renderable2d';
+import Renderable from './renderable';
 
-export default class Renderer2D {
+export default class Renderer {
   gl: WebGL2RenderingContext;
   public projection = mat4.create();
   public view = mat4.create();
-  protected renderList: Renderable2D[] = [];
+  protected renderList: Renderable[] = [];
 
   constructor(canvas: HTMLCanvasElement) {
     const ctx = canvas.getContext('webgl2');
@@ -28,7 +28,7 @@ export default class Renderer2D {
     mat4.ortho(this.projection, canvas.width, canvas.height, 100);
   }
 
-  add(renderable: Renderable2D) {
+  add(renderable: Renderable) {
     this.renderList.push(renderable);
   }
 

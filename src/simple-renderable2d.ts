@@ -2,9 +2,10 @@ import { Mat3, mat3, v2, V2 } from '@wibblymat/maths';
 import Geometry2D from './geometry2d';
 import Texture from './texture';
 import Shader from './shader';
+import Renderable from './renderable';
 
-/** Represents a thing that can be rendered in the 2D view */
-export default class Renderable2D {
+/** A very basic 2D implementation of Renderable */
+export default class SimpleRenderable2D extends Renderable {
   protected $rotation: number = 0;
   protected scale: V2 = v2.create();
   protected $pos: V2 = v2.create();
@@ -12,6 +13,7 @@ export default class Renderable2D {
   protected dirty = false;
 
   constructor(public geometry: Geometry2D, public texture: Texture, public shader: Shader) {
+    super();
     mat3.identity(this.$transform);
   }
 
@@ -26,8 +28,8 @@ export default class Renderable2D {
   get transform(): Mat3 {
     if (this.dirty) {
       mat3.identity(this.$transform);
-      mat3.rotate(this.$transform, this.$transform, this.$rotation);
       mat3.translate(this.$transform, this.$transform, this.$pos);
+      mat3.rotate(this.$transform, this.$transform, this.$rotation);
       mat3.scale(this.$transform, this.$transform, this.scale);
       this.dirty = false;
     }
