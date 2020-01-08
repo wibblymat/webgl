@@ -8,13 +8,13 @@ interface TextureOptions {
 }
 
 export default class Texture {
-  static fromU8Array(gl: WebGL2RenderingContext, data: Uint8Array, width: number, height: number, format: number) {
+  static fromU8Array(gl: WebGL2RenderingContext, data: Uint8Array, width: number, height: number, format: number, internalFormat: number) {
     const texture = new Texture(gl, null);
     texture.width = width;
     texture.height = height;
     texture.bind(gl.TEXTURE0);
     gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
-    gl.texImage2D(gl.TEXTURE_2D, 0, format, width, height, 0, format, gl.UNSIGNED_BYTE, data);
+    gl.texImage2D(gl.TEXTURE_2D, 0, internalFormat, width, height, 0, format, gl.UNSIGNED_BYTE, data);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
@@ -57,6 +57,14 @@ export default class Texture {
   update(image: TexImageSource) {
     this.gl.bindTexture(this.gl.TEXTURE_2D, this.id);
     this.gl.texImage2D(this.gl.TEXTURE_2D, 0, this.gl.RGBA, this.gl.RGBA, this.gl.UNSIGNED_BYTE, image);
+  }
+
+  updateU8(data: Uint8Array, width: number, height: number, format: number, internalFormat: number) {
+    this.bind(this.gl.TEXTURE0);
+    this.width = width;
+    this.height = height;
+    this.gl.pixelStorei(this.gl.UNPACK_ALIGNMENT, 1);
+    this.gl.texImage2D(this.gl.TEXTURE_2D, 0, internalFormat, width, height, 0, format, this.gl.UNSIGNED_BYTE, data);
   }
 
   create(width: number, height: number) {
