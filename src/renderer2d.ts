@@ -3,9 +3,9 @@ import Shader from './shader';
 import Renderable2D from './renderable2d';
 
 export default class Renderer2D {
+  gl: WebGL2RenderingContext;
   public projection = mat4.create();
   public view = mat4.create();
-  protected gl: WebGL2RenderingContext;
   protected renderList: Renderable2D[] = [];
 
   constructor(canvas: HTMLCanvasElement) {
