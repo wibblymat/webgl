@@ -71,6 +71,17 @@ export default class Shader {
   }
 
   /**
+   * Set a vec2 uniform value
+   */
+  setUniformVec2(name: string, value: Float32Array) {
+    if (!this.uniformLocations.has(name)) {
+      console.log(`Tried to set unknown uniform ${name}`);
+      return;
+    }
+    this.gl.uniform2fv(this.uniformLocations.get(name)!, value);
+  }
+
+  /**
    * Set a vec3 uniform value
    */
   setUniformVec3(name: string, value: Float32Array) {
