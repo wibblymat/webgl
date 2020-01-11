@@ -1,6 +1,6 @@
 {
   "name": "@wibblymat/webgl",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A collection of webgl helpers",
   "main": "dist/webgl.js",
   "types": "dist/webgl.d.ts",
